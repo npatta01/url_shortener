@@ -1,4 +1,7 @@
+
+
 const mongoose = require("mongoose");
+
 const express = require("express");
 const bodyParser = require('body-parser');
 const urlRoutes = require('./routes/url');
@@ -9,6 +12,8 @@ require('./models/url');
 
 
 require('dotenv').config();
+
+const {fetchRoute} =  require( "./routes/shared");
 
 
 const mongoURI = process.env.DB;
@@ -41,6 +46,9 @@ app.use(bodyParser.json());
 
 
 app.use('/api', urlRoutes);
+
+
+app.use('/:code', fetchRoute);
 
 
 // Serve static files if in production

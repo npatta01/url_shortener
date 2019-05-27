@@ -4,6 +4,7 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 
 
@@ -13,6 +14,9 @@ import NavBar from "./components/NavBar";
 
 
 let apiHost = "";
+
+const Home = () => <h1>Home</h1>;
+const Admin = () => <h1>Admin</h1>;
 
 class App extends React.Component {
 
@@ -45,27 +49,14 @@ class App extends React.Component {
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
 
+                    <Router>
+                        <div>
+                            <Route exact path="/" component={Home} />
+                            <Route strict path="/admin" component={Admin} />
+                        </div>
+                    </Router>
 
 
-                    <div>
-                        <Form onSubmit={this.onClick}>
-                            <Form.Group controlId="originalUrl">
-                                <Form.Label>Original Url</Form.Label>
-                                <Form.Control type="text" placeholder="Enter original url" ref="url"/>
-
-                            </Form.Group>
-
-                            <Form.Group controlId="shortCode">
-                                <Form.Label>Short Code</Form.Label>
-                                <Form.Control type="text" placeholder="Short Code" ref="shortCode"/>
-                            </Form.Group>
-
-                            <Button variant="primary" type="submit">
-                                Submit
-                            </Button>
-                        </Form>
-
-                    </div>
 
                 </header>
             </div>

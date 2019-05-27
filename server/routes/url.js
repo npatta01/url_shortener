@@ -1,23 +1,22 @@
 const mongoose = require("mongoose");
 const validUrl = require("valid-url");
-const errorUrl='http://localhost/error';
+
 
 require('../models/url')
 
 const Url = mongoose.model("url");
 const shortid = require("shortid");
+const {fetchRoute} =  require( "./shared");
 
 const express = require('express');
 const router = express.Router();
 
+
 router.get("/url/:code", async (req, res) => {
     const urlCode = req.params.code;
     const item = await Url.findOne({ urlCode: urlCode });
-    if (item) {
-      return res.redirect(item.originalUrl);
-    } else {
-      return res.redirect(errorUrl);
-    }
+
+    res.status(200).json(item);
 });
 
 // About page route.
