@@ -4,19 +4,14 @@ import './App.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
 
-import NavBafr from 'NavBar'
-import Navbar from 'react-bootstrap/Navbar';
-import Nav from 'react-bootstrap/Nav';
+
 
 
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios'
+import NavBar from "./components/NavBar";
 
-//axios.defaults.withCredentials = true
 
-
-//let apiHost = "https://np-url-shortener.herokuapp.com"
-//let apiHost = "http://localhost:3005";
 let apiHost = "";
 
 class App extends React.Component {
@@ -45,7 +40,7 @@ class App extends React.Component {
         return (
             <div className="App">
 
-
+                <NavBar/>
 
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
