@@ -1,0 +1,6 @@
+.dockerignore
+.git
+node_modules
+**/node_modules/
+Readme.md
+**/Readme.md

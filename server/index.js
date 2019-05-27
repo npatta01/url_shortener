@@ -1,32 +1,29 @@
 const mongoose = require("mongoose");
 const express = require("express");
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 const urlRoutes = require('./routes/url');
 const cors = require('cors');
+const path = require("path");
 
-require('./models/url')
-
-
-require('dotenv').config()
+require('./models/url');
 
 
-
+require('dotenv').config();
 
 
 const mongoURI = process.env.DB;
-const connectOptions = { 
-  keepAlive: true, 
-  useNewUrlParser: true,
-  reconnectTries: Number.MAX_VALUE 
-}; 
+const connectOptions = {
+    keepAlive: true,
+    useNewUrlParser: true,
+    reconnectTries: Number.MAX_VALUE
+};
 
 //Connect to MongoDB 
-mongoose.Promise = global.Promise; 
-mongoose.connect(mongoURI, connectOptions, (err, db) => 
-{ 
-  if (err) console.log(`Error`, err); 
-  console.log(`Connected to MongoDB`); 
-}); 
+mongoose.Promise = global.Promise;
+mongoose.connect(mongoURI, connectOptions, (err, db) => {
+    if (err) console.log(`Error`, err);
+    console.log(`Connected to MongoDB`);
+});
 
 
 const port = process.env.PORT || 3005;
@@ -36,16 +33,27 @@ app.use(cors());
 
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({extended: false}));
 
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 //app.options('*', cors()) // include before other routes
-
-app.get('/', async (req, res) => res.send('Hello World!'))
 
 
 app.use('/api', urlRoutes);
 
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+// Serve static files if in production
+if (process.env.NODE_ENV === "production") {
+    // Set static folder
+    app.use(express.static(path.join(__dirname, '../client/build')));
+
+    app.get('/*', (req, res) => {
+        res.sendFile(path.join(__dirname, '../client/build', 'index.html'));
+    });
+} else {
+    app.get('/', async (req, res) => res.send('Listening only on server mode'));
+
+}
+
+app.listen(port, () => console.log(`Url Shortener pp listening on port ${port}!`));
