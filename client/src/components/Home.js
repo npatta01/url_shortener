@@ -29,7 +29,7 @@ class Home extends React.Component {
         const {data} = res;
         console.log(data);
 
-        const newUrl =  `${window.location.hostname}/${data.urlCode}`;
+        const newUrl =  `https://${window.location.hostname}/u/${data.urlCode}`;
         this.setState({ message: data, url:newUrl  });
     };
 
