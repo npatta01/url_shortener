@@ -48,7 +48,7 @@ app.use(bodyParser.json());
 app.use('/api', urlRoutes);
 
 
-app.use('/:code', fetchRoute);
+app.use('/u/:code', fetchRoute);
 
 
 // Serve static files if in production
@@ -63,5 +63,6 @@ if (process.env.NODE_ENV === "production") {
     app.get('/', async (req, res) => res.send('Listening only on server mode'));
 
 }
+
 
 app.listen(port, () => console.log(`Url Shortener pp listening on port ${port}!`));
