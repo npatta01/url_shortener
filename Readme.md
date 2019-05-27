@@ -1,7 +1,23 @@
 # Url Shortener
 
-This project is a simple url shortener build 
+This project is a simple url shortener 
 
+
+## Main Features
+
+- URL Shortening
+- Visitor Counting
+- Expirable Links
+- URL deletion
+- Dockerizable
+
+
+## Local Development
+```
+yarn
+npm run start
+
+```
 
 
 ## Local Deployment

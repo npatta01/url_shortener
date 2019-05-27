@@ -4,3 +4,5 @@ node_modules
 **/node_modules/
 Readme.md
 **/Readme.md
+build
+**/build/

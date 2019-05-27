@@ -3,6 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form'
+
+import NavBafr from 'NavBar'
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+
+
 import 'bootstrap/dist/css/bootstrap.css';
 import axios from 'axios'
 
@@ -38,8 +44,12 @@ class App extends React.Component {
     render() {
         return (
             <div className="App">
+
+
+
                 <header className="App-header">
                     <img src={logo} className="App-logo" alt="logo"/>
+
 
 
                     <div>
